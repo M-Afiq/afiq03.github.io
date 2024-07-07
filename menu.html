@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            background-image: url(images/spegatti.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .container-1 {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100px;
+            margin-right: 20px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        header {
+            background:  rgb(39, 39, 39);
+            color: white;
+            padding: 10px 0;
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000; 
+            transition: background 0.3s;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        header.transparent {
+            background: rgba(51, 51, 51, 0.5); 
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #77ab59;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            margin: 0;
+            position: fixed;
+            right: -250px; /* Initially hidden */
+            top: 0;
+            height: 100%;
+            width: 250px;
+            background-color: rgba(51, 51, 51, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.3s ease;
+        }
+
+        header ul.show {
+            right: 0; /* Show the nav when toggled */
+        }
+
+        header li {
+            margin: 20px 0;
+        }
+
+        header .nav-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px; /* Resize the button */
+            padding: 30px; /* Add padding */
+            cursor: pointer;
+            position: fixed;
+            top: 15px; /* Adjust the top position */
+            right: 20px; /* Adjust the right position */
+            z-index: 1001;
+        }
+
+        .content {
+            padding-top: 150px; /* Adjust this value based on the header height */
+        }
+
+        .section {
+            padding: 20px 0;
+        }
+
+        .menu-category {
+            background-color: #1e1e1e;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .menu-category h2 {
+            color: #77ab59;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding: 10px 0;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-right: 20px;
+        }
+
+        .menu-item h3 {
+            margin: 0;
+            padding: 0;
+            overflow: hidden; /* Clear any float */
+        }
+
+        .menu-item p {
+            margin: 5px 0;
+            padding: 0;
+        }
+
+        .menu-item span {
+            color: #77ab59;
+            float: right;
+            margin-left: 20px; /* Adjust the margin as needed */
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            clear: both;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #77ab59;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('transparent');
+            } else {
+                header.classList.remove('transparent');
+            }
+        });
+
+        function toggleNav() {
+            const nav = document.querySelector('header ul');
+            const toggleBtn = document.querySelector('.nav-toggle');
+            nav.classList.toggle('show');
+            if (nav.classList.contains('show')) {
+                toggleBtn.innerHTML = "X";
+            } else {
+                toggleBtn.innerHTML = "☰";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Paan's Corner Logo">
+                <h1>Paan's Corner</h1>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="container-1">
+            <div id="starters" class="section menu-category">
+                <h2>Starters</h2>
+                <div class="menu-item">
+                    <img src="images/garlic bread.webp" alt="Garlic Bread">
+                    <div>
+                        <h3>Garlic Bread<span>RM...</span></h3>
+                        <p>Soft and tasty garlic bread.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/mushroom soup.jpg" alt="Mushroom Soup">
+                    <div>
+                        <h3>Mushroom Soup<span>RM...</span></h3>
+                        <p>Rich and creamy mushroom soup.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/salads.jpg" alt="Mushroom Soup">
+                    <div>
+                        <h3>Salads<span>RM...</span></h3>
+                        <p>Salads, Mustard sauce, and many more</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="main-courses" class="section menu-category">
+                <h2>Main Courses</h2>
+                <div class="menu-item">
+                    <img src="images/lamb_chop_.webp" alt="Lamb Chop">
+                    <div>
+                        <h3>Lamb Chop<span>RM..</span></h3>
+                        <p>Fresh lamb.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/carbonara.jpg" alt="Spaghetti Carbonara">
+                    <div>
+                        <h3>Spaghetti Carbonara<span>RM..</span></h3>
+                        <p>Classic Italian pasta with a creamy sauce, beef bacon, and parmesan cheese.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="specials" class="section menu-category">
+                <h2>Specials</h2>
+                <div class="menu-item">
+                    <img src="images/nasi goreng ayam butter.jpg" alt="Nasi Goreng Ayam Buttermilk">
+                    <div>
+                        <h3>Nasi Goreng Ayam Buttermilk<span>RM..</span></h3>
+                        <p>Creamy chicken buttermilk served with fried rice.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/nasi grgr cc.jpeg" alt="Nasi Goreng Chicken Chop">
+                    <div>
+                        <h3>Nasi Goreng Chicken Chop<span>RM..</span></h3>
+                        <p>Chicken chop, fried rice, and crunchy french fries.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/nasi grg aym korea.jpeg" alt="Nasi Goreng Chicken Chop">
+                    <div>
+                        <h3>Nasi Goreng Ayam Korea<span>RM..</span></h3>
+                        <p>Fried rice and chicken with korean sauce.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="beverages" class="section menu-category">
+                <h2>Beverages</h2>
+                <div class="menu-item">
+                    <img src="images/coke float.webp" alt="Coke Float">
+                    <div>
+                        <h3>Coke Float<span>RM..</span></h3>
+                        <p>Coke with vanilla ice cream.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/soda herbs.jpeg" alt="Soda Herbs">
+                    <div>
+                        <h3>Soda Herbs<span>RM..</span></h3>
+                        <p>F&N Ice Cream Soda, lemon, and mint.</p>
+                    </div>
+                </div>
+                <div class="menu-item">
+                    <img src="images/Blue-Raspberry-Lemonade-8.jpg" alt="Soda Herbs">
+                    <div>
+                        <h3>Blue Lemon<span>RM..</span></h3>
+                        <p>Soda served with Lemons flavor</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Paan | Follow us on 
+            <a href="https://www.facebook.com/paancornerrr" target="_blank" style="color: #77ab59;">Facebook</a>, 
+            <a href="https://www.instagram.com/paancorner" target="_blank" style="color: #77ab59;">Instagram</a>, 
+            <a href="https://www.wasap.my/01151641339" target="_blank" style="color: #77ab59;">WhatsApp</a>
+        </p>
+        <p>Contact us: 011-5164-1339 | paancorner@gmail.com</p>
+    </footer>
+</body>
+</html>

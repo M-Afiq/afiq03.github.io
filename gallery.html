@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            background-image: url(images/background\ food.jpg);
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100px;
+            margin-right: 20px;
+            margin-left: 10px;
+            margin-bottom: 10px;
+        }
+
+        header {
+            background:  rgb(39, 39, 39);
+            color: white;
+            padding: 10px 0;
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000; 
+            transition: background 0.3s;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        header.transparent {
+            background: rgba(51, 51, 51, 0.5); 
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #77ab59;
+        }
+
+        header ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            margin: 0;
+            position: fixed;
+            right: -250px; /* Initially hidden */
+            top: 0;
+            height: 100%;
+            width: 250px;
+            background-color: rgba(51, 51, 51, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: right 0.3s ease;
+        }
+
+        header ul.show {
+            right: 0; /* Show the nav when toggled */
+        }
+
+        header li {
+            margin: 20px 0;
+        }
+
+        header .nav-toggle {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px; /* Resize the button */
+            padding: 30px; /* Add padding */
+            cursor: pointer;
+            position: fixed;
+            top: 15px; /* Adjust the top position */
+            right: 20px; /* Adjust the right position */
+            z-index: 1001;
+        }
+
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-top: 100px; /* Ensure content below header */
+        }
+
+        .gallery-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .gallery-item {
+            width: 300px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            clear: both;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        footer a {
+            color: #77ab59;
+            text-decoration: none;
+        }
+    </style>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('transparent');
+            } else {
+                header.classList.remove('transparent');
+            }
+        });
+
+        function toggleNav() {
+            const nav = document.querySelector('header ul');
+            const toggleBtn = document.querySelector('.nav-toggle');
+            nav.classList.toggle('show');
+            if (nav.classList.contains('show')) {
+                toggleBtn.innerHTML = "X";
+            } else {
+                toggleBtn.innerHTML = "☰";
+            }
+        }
+    </script>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.png" alt="Paan's Corner Logo">
+                <h1>Paan's Corner</h1>
+            </div>
+            <button class="nav-toggle" onclick="toggleNav()">☰</button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="menu.html">Menu</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="about.html">About Us</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="content">
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="images/carbonara.jpg" alt="Dish 1">
+            </div>
+            <div class="gallery-item">
+                <img src="images/terengganu-360-svs.jpg" alt="Dish 2">
+            </div>
+            <div class="gallery-item">
+                <img src="images/mushroom soup.jpg" alt="Ambiance 1">
+            </div>
+            <div class="gallery-item">
+                <img src="images/western-fried-chicken-food-delivery-malaysia.jpg" alt="Ambiance 2">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Paan | Follow us on 
+            <a href="https://www.facebook.com/paancornerrr" target="_blank" style="color: #77ab59;">Facebook</a>, 
+            <a href="https://www.instagram.com/paancorner" target="_blank" style="color: #77ab59;">Instagram</a>, 
+            <a href="https://www.wasap.my/01151641339" target="_blank" style="color: #77ab59;">WhatsApp</a>
+        </p>
+        <p>Contact us: 011-5164-1339 | paancorner@gmail.com</p>
+    </footer>
+
+</body>
+</html>
